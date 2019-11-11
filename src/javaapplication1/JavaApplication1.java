@@ -41,9 +41,15 @@ public class JavaApplication1 {
 
     public static void writeXLSXFile() throws IOException {
         String excelFileName = "Test.xlsx";
-        String sheetName = "Sheet1";
-        XSSFWorkbook wb = new XSSFWorkbook();
-        XSSFSheet sheet = wb.createSheet(sheetName);
+        InputStream ExcelFileToRead = new FileInputStream(excelFileName);
+        XSSFWorkbook wb = new XSSFWorkbook(ExcelFileToRead);
+        XSSFWorkbook test = new XSSFWorkbook();
+        XSSFSheet sheet = wb.getSheetAt(0);
+
+//        String sheetName = "Sheet1";
+//        XSSFWorkbook wb = new XSSFWorkbook();
+//        XSSFSheet sheet = wb.createSheet(sheetName);
+        
         for (int r = 0; r < 5; r++) {
             XSSFRow row = sheet.createRow(r);
             for (int c = 0; c < 5; c++) {
